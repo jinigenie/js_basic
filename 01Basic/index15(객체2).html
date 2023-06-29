@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,4 +30,37 @@
 
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //함수로 만드는 객체 모형
+        function person(name) {
+            this.age = 10;
+            this.name = name;
+
+            this.info = function() {
+                console.log(this.age, this.name);
+            }
+        }
+
+        var obj = new person('hong');
+        console.log(obj);
+        console.log(obj['age']);
+        console.log(obj.age);
+        console.log(obj.name);
+
+    </script>
+
+
+</body>
+>>>>>>> b104f4c782b73562c42e89f1406d96d309be8a59
 </html>

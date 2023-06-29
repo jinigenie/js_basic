@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,4 +33,40 @@
 
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        f1();  // 함수호출을 선언 위에 작성 가능(선언적 함수에서만 가능)
+
+        function f1(){
+            console.log('함수 호출');
+        }
+
+        function f2(a, b) {
+            return a + b;
+        }
+
+        console.log(f2(3, 5));
+
+        // 함수를 변수에 저장하기
+        var a = f2;
+        console.log(a(1, 3));
+        console.log(a);
+
+
+
+    </script>
+
+
+</body>
+>>>>>>> b104f4c782b73562c42e89f1406d96d309be8a59
 </html>

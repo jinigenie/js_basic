@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,4 +59,66 @@
 
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var num = 10;
+
+        if(true) {
+            var num = 20;
+        }
+
+        console.log(num);  //if문 안에서 선언한 변수도 전역변수로 취급
+
+        var a = 10;         // 전역변수
+
+        function f1() {
+            var a = 50;     // 지역변수
+            console.log(a);
+        }
+
+        f1();
+        console.log(a);
+
+        for(var i = 1; i <= 10; i++){
+
+        }
+
+        console.log(i);     // 함수 외에는 모두 전역변수 취급
+
+        console.log('-------------------------------------');
+
+
+        //let 변수 (변수 범위는 중괄호 기준) --> ES6
+        let b = 10;
+        if(true) {
+            let b = 20;
+        }
+        console.log(b);
+
+        let c = 10;
+        function f2(){
+            let c = 10;    // 전역, 지역 구분되면 같은 이름 가능
+            //let c = 20; 같은 이름으로 선언 x
+        }
+        f2();
+        console.log(c);
+
+
+
+
+
+    </script>
+
+
+</body>
+>>>>>>> b104f4c782b73562c42e89f1406d96d309be8a59
 </html>

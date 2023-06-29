@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,4 +32,39 @@
 
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //JS는 선언구문의 순서가 중요
+        //화면에서 1개만 사용 가능
+        //화면 html 로드가 끝난 이후에 실행
+        window.onload = function(){
+
+            var btn = document.getElementById("btn");
+
+            console.log(btn);
+
+            btn.onclick = function() {
+                console.log("안녕");
+            }
+
+        }
+
+
+    </script>
+
+    <button id="btn">기본 이벤트</button>
+
+
+</body>
+>>>>>>> b104f4c782b73562c42e89f1406d96d309be8a59
 </html>

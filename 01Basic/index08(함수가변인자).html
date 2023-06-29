@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,4 +23,30 @@
     </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var f = function(a, b){
+            console.log(a, b);          // 인수 2개만 출력 -- 1, 2
+            console.log(arguments);     // 전달되는 모든 인수 받음
+            console.log(arguments.length);
+            console.log(arguments[0]);
+        }
+
+        // 매개변수 개수는 정확히 일치하지 않아도 호출 가능하나 되도록 맞추는 것이 좋음
+        f(1, 2, 3, 4, 5, 6);
+
+    </script>
+
+</body>
+>>>>>>> b104f4c782b73562c42e89f1406d96d309be8a59
 </html>

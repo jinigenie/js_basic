@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>이벤트 객체 - 이벤트가 발생되면, 이벤트 함수 안으로 자동으로 이벤트 객체를 전달해줍니다.</h3>
+
+    <button id="btn">이벤트객체 확인</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(e) {
+            // console.log(event); //이벤트에 관련한 정보 출력(첫번째 매개변수로 넣어주도록 약속되어있음)
+            console.log(e);        //이벤트 객체가 전달됨
+            
+            console.log(e.target);
+        }
+
+    </script>
+
+
+
+
+    <h3>버튼으로 눌러서 처리하는게 아니라, 동일한 태그 여러 개에 대해서 즉시 반영</h3>
+
+    <p class="title"></p>
+
+    <ul class="box">
+        <li>1. 홍길동</li>
+        <li>2. 홍길자</li>
+        <li>3. 이순신</li>
+        <li>4. 홍길순</li>
+        <li>5. 신사임당</li>
+    </ul>
+
+    <script>
+        //반복문으로 다중이벤트 걸기 - 좋은 방법은 아님
+        var li = document.querySelectorAll(".box > li");
+        
+        for(var i = 0; i < li.length; i++) {  //해결방법 1 -> let i 로 선언
+
+            /* 렉시컬스코프 ; 아래처럼 작성하면 i값이 5로 5번 나옴(li 클릭 전에 이미 i는 반복으로 5가 되어있음)
+            li[i].onclick = function() {
+                console.log(i);  
+            }
+            */
+
+            /* 해결방법 2
+            (function(a){  
+                li[a].onclick = function() {
+                    
+                }
+            })(i);
+            */
+
+            li[i].onclick = function() {
+                // console.log(this);  
+                console.log(event.target);
+                document.querySelector(".title").innerHTML = event.target.innerHTML;
+
+            }
+
+        }
+
+    
+    </script>
+
+</body>
+</html>
