@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //JS에서 객체는 {}로 표기하고, 자바의 맵과 동일
+        var person = {name : 'hong', age : 20, arr : [1, 2, 3]};
+
+        console.log(typeof person);
+
+        //JS {}에 접근하는 방식은 2가지 있습니다.
+        // . 으로 접근
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.arr);
+        console.log(person.arr[2]);
+        
+        //객체['키']
+        console.log(person['name']);
+        console.log(person['age']);
+        console.log(person['age']);
+        console.log(person['arr'][2]);
+
+        console.log('-------------------------------------');
+
+        //객체안에 객체
+
+        var exam={kor:30,eng:40};
+        var park={name:'박수',age:20,exam:exam};
+
+        console.log(park['exam']);
+        console.log(park['exam']['kor']);
+
+
+        //객체안에 함수
+        var obj={func:function(){ console.log('호출됨')}}
+        // console.log(obj['func']()) //호출됨 출력
+        //obj.func();도 호출됨 출력
+
+
+        //리스트 안에 객체
+        var arr = [
+            {id: 1, name: 'hong'},
+            {id: 2, name: 'lee'},
+            {id: 3, name: 'kim'}
+        ]
+
+        console.log(arr);
+        for(var i = 0 ; i < arr.length; i++){
+            console.log(arr[i].id, arr[i].name);
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

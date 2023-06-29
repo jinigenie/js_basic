@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+        /* 클로저를 이용한 setter 
+
+        function obj(){
+            var name = 'hong';
+
+            //setter
+            return function(aaa) {
+                name = aaa;
+                return name;
+            }
+
+        }
+
+        var res = obj();
+        console.log(res('lee'));
+        */
+
+        function person(){
+            var name = 'hong';
+
+            return {
+                'setName' : function(aaa){
+                    name = aaa;
+                },
+                'getName' : function(){
+                    return name;
+                }
+            };  // 객체 리턴 {키 : 값}
+        }
+
+        var obj = person();
+        obj.setName('lee');
+
+        console.log(obj.getName());
+
+    </script>
+    
+</body>
+</html>
