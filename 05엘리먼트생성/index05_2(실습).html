@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>할일목록 만들기</h3>
+
+    <form class="myForm">
+        <h3 class="nameTitle"></h3>
+        <input type="text" placeholder="이름을 입력하세요" class="nameIn">
+        <button type="button" id="btn1">확인</button> <!-- form태그 안에서 버튼타입없으면 바로 제출 -->
+    </form>
+        
+    <form class="todoForm">
+        <input type="text" placeholder="할일을 작성하세요" class="todoIn">
+        <button type="button" id="btn2">확인</button>
+        
+        <ul class="todoList">
+            
+        </ul>
+    </form>
+
+    <script>
+
+        var myForm = document.querySelector('.myForm');
+        // myForm.querySelector(~~) 형태로 하위요소들을 불러올 수도 있음
+        var nameTitle = myForm.querySelector('.nameTitle');
+        var nameIn = myForm.querySelector('.nameIn');
+        var btn1 = myForm.querySelector('#btn1');
+
+        btn1.addEventListener('click', function(){
+            nameTitle.innerHTML = nameIn.value + '님 안녕하세요';
+            nameIn.value = "";
+            nameIn.style.display = 'none';
+            btn1.style.display = 'none';
+        });
+
+        ////////////////////////////////////////
+
+        var todoForm = document.querySelector(".todoForm");
+
+        var todoIn = todoForm.querySelector(".todoIn");
+        var todoList = todoForm.querySelector(".todoList");
+        var btn2 = todoForm.querySelector("#btn2");
+
+        btn2.addEventListener('click', function(){
+
+            var text = todoIn.value;
+            todoIn.value = '';
+            
+            var li = document.createElement('li');
+            li.innerHTML = text;
+            
+            var button = document.createElement('button');
+            button.innerHTML = 'x';
+            button.type = 'button';
+
+            var up = document.createElement('button');
+            up.innerHTML = '↑';
+            up.type = 'button';
+
+            var down = document.createElement('button');
+            down.innerHTML = '↓';
+            down.type = 'button';
+            
+            button.onclick = del;
+            up.onclick = upper;
+            down.onclick = under;
+
+            li.appendChild(button);
+            li.appendChild(up);
+            li.appendChild(down);
+            todoList.appendChild(li);
+
+        });
+
+        function del(){
+            console.log('삭제버튼');
+            // li.remove();
+            this.parentElement.remove();
+        };
+
+        function upper(){
+            var todoList = document.querySelector('.todoList');
+            var res = window.confirm('위로 이동하시겠습니까?');
+                
+            if(res){
+                var current = this.parentElement;
+                var prev = current.previousElementSibling;
+                
+                todoList.insertBefore(current, prev);
+
+                   if(prev === null) {
+                    alert('가장 처음 행입니다');
+                    return;
+                }
+            }
+        };
+
+        function under(){
+            var todoList = document.querySelector('.todoList');
+            var res = window.confirm('아래로 이동하시겠습니까?');
+                
+            if(res){
+                var current = this.parentElement;
+                var next = current.nextElementSibling;
+                
+                if(next === null) {
+                    alert('마지막 행입니다');
+                    return;
+                }
+                todoList.insertBefore(next, current);
+            }
+        };
+
+
+    </script>
+
+</body>
+</html>

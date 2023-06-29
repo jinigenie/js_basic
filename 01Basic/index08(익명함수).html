@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        var func = function() {
+            console.log('익명함수 호출');
+        }
+        func();  // 익명함수는 호출을 선언 아래에서만 가능
+
+        var func2 = function(a, b) {
+            return a + b;
+        }
+
+        console.log(func2(10, 2));
+
+        console.log('---------------------------------------');
+
+        
+        var method = function(a){
+            console.log('매개변수: ', a);
+            if(a % 2 == 0) console.log('짝수');
+            else console.log('홀수');
+        }
+
+        method(10);
+
+        var point = function(name, a, b, c){
+            console.log('매개변수: ', name, a, b, c);
+            return name+'의 평균은: ' + parseInt((a + b + c) / 3);
+        }
+
+        console.log(point('홍길동', 88, 90, 90));
+
+
+
+
+    </script>
+
+
+</body>
+</html>

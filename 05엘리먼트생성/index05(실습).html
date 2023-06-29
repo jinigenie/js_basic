@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>할일 목록 만들기</h2>
+
+    <div class="first">
+        <input type="text" class="myname" placeholder="이름을 입력하세요.">
+        <button id="btn1">확인</button>
+    </div>
+    <br>
+
+    <input type="text" class="todo" placeholder="당신의 할일을 적으세요.">
+    <button id="btn2">확인</button>
+
+    <ul class="list">
+
+    </ul>
+
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var myname = document.querySelector(".myname");
+        var first = document.querySelector(".first");
+
+        btn1.addEventListener('click', function () {
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = myname.value + '님 안녕하세요';
+
+            first.appendChild(h3);
+
+            myname.style.display = 'none';
+            btn1.style.display = 'none';
+
+        })
+
+        var btn2 = document.getElementById("btn2");
+        var todo = document.querySelector(".todo");
+        var list = document.querySelector(".list");
+
+        btn2.addEventListener('click', function () {
+
+            var li = document.createElement('li');
+            var btn3 = document.createElement('button');
+            li.innerHTML = todo.value;
+            btn3.innerHTML = 'X';
+
+            list.appendChild(li);
+            li.appendChild(btn3);
+            todo.value = '';
+            
+            btn3.addEventListener('click', function () {
+                li.remove();
+            })
+            
+        })
+        
+
+
+    </script>
+
+
+</body>
+
+</html>
