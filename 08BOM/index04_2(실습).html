@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bgImg {animation:fadeIn .5s ease-in-out;}
+
+        @keyframes fadeIn {
+            from{
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 애니메이션이 새롭게 적용되려면 img태그를 새롭게 생성 -->
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+
+    </div>
+
+    <script>
+
+        var img = document.querySelectorAll("img");
+        var i = 1;
+
+        setInterval(changeImg, 2000);
+            
+        function changeImg() {
+            var img = document.createElement("img");
+            img.src = 'img/slide' + ++i + '.jpg';
+            img.classList.add("bgImg");
+            
+            var slide = document.querySelector(".slide")
+            slide.removeChild(slide.firstElementChild);
+            slide.appendChild(img);
+
+            if(i == 4) i = 0;
+        }
+
+    </script>
+
+</body>
+</html>

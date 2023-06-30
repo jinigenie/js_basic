@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form name="actionForm">
+        아이디: <input type="text" name="id" onkeypress="enterFunc()">
+        비밀번호: <input type="password" name="pw" onkeypress="enterFunc()">
+
+        ...생략
+        <button type="button" id="btn" onclick="joinCheck()">가입</button>
+
+    </form>
+
+    <script>
+        function joinCheck() {
+            
+            var id = document.actionForm.id.value;
+            var pw = document.actionForm.pw.value;
+
+            var regEx1 = /^[a-z]+[a-z0-9]{5,19}$/g;    //소문자 숫자 5~19
+            var regEx2 = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;  //대문자, 소문자, 숫자, 특수기호 포함
+
+            if(!regEx1.test(id)){
+                alert("아이디는 소문자 숫자 5~19글자 입니다");
+                return;
+            }
+            if(!regEx2.test(pw)){
+                alert("비밀번호는 대소문자, 숫자, 특수기호 포함해야합니다");
+                return;
+            }
+        }
+
+        function enterFunc() {
+            // console.log(event);
+
+            if(event.keyCode == 13) {  //사용자 엔터
+                joinCheck();
+            }
+        }
+
+    </script>
+    
+
+
+
+</body>
+</html>

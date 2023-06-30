@@ -74,6 +74,19 @@
         3. data-id의 값에 알맞는 태그에 active속성을 추가하면됩니다.
 		*/
 
+        var ul = document.querySelector(".toggle");
+        var menu = document.querySelectorAll(".toggle-menu");
+
+        ul.addEventListener('click', function(){
+            
+            if(event.target.tagName != "LI") return;
+
+            for(var i = 0; i < menu.length; i++){
+                menu[i].classList.remove('active');
+            }
+            document.querySelector(event.target.dataset.id).classList.add('active');
+            
+        })
     </script>
 
 
