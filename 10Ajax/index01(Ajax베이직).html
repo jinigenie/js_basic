@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //동기 -> 순차적으로 실행
+        //비동기 -> 비순차적으로  실행
+
+        /* 1st
+        console.log(1);
+
+        //fetch를 만나면 비동기로 병렬적으로 실행
+        fetch('hi.txt').then(function(response) {
+            
+            response.text().then(function(data) {
+                console.log("zzzz"+data);
+            })
+        })
+        console.log(2);
+        */
+
+        /* 2nd
+        : fetch를 사용하면 promise 객체를 반환(상태를 가지고 있는 객체)
+        : pending = 대기중
+        : fulfilled = 성공
+        : reject = 실패
+        console.log(fetch('hi.txt')); 
+
+        : promise객체 안에는 then(콜백함수)를 사용할 수 있음
+        : 콜백함수 = 콜(요청)했을 때, 백(응답)받을 수 있도록 약속된 함수
+        fetch('hi.txt').then(xxx)
+        
+        //콜백함수
+        function xxx(response) {
+            console.log(response);
+        }
+
+        */
+
+        /*3nd
+        : text()는 body에 있는 데이터를 문자열로 변환 - return: Promise객체
+        : json()은 body에 있는 데이터를 Object로 변환 - return: Promise객체
+        
+        fetch('hi.txt').then(function(response){
+            console.log(response.text());
+        })
+        */
+        
+
+        /*
+        fetch('hi.txt').then(function(response) {
+
+            if(response.status != 200) {
+                alert('통신에 실패했습니다');
+                return;
+            }
+
+            response.text().then(function(data) {
+                console.log(data);
+            })
+        })
+        */
+
+        fetch('hi.txt').then(function(response){
+            if(response.status != 200){
+                console.log('통신 실패');
+                return;
+            }
+
+            var r = response.text();
+            console.log(r);
+            return r;  // 반환된 결과는 fetch 함수의 리턴으로 연결
+
+        }).then(function(data){
+            console.log(1 + ": " + data);
+            return data;
+        }).then(function(data){
+            console.log(2 + ": " + data);
+            return data;
+        }).then(function(data){
+            console.log(3 + ": " + data);
+        }).catch(function(e) {
+            console.log(e);    //내부 에러 시, 바로 catch로 넘어옴
+        })
+
+
+
+
+    </script>
+
+
+</body>
+</html>

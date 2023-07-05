@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    팝업창
+    <input type="checkbox" id="check"> 오늘 하루 이 창을 열지 않기
+
+    <script>
+
+        function addCookie() {
+            var date = new Date();
+            date.setDate(date.getDate() + 7);
+
+            if (check.checked) {
+                document.cookie = "new=cookieeeee; expires=" + date.toUTCString + "; path=/";
+            }
+        }
+
+        var check = document.getElementById("check");
+        check.onclick = addCookie;
+
+
+    </script>
+
+</body>
+
+</html>

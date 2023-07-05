@@ -42,36 +42,41 @@
 
     <script>
 
-        var body = document.querySelector("body");
-        var obj = JSON.parse(body.dataset.img);                //JSON 문자열 -> 객체(숫자를 제외한 모든 문자는 문자열""처리)
+        var cnt = 0;
+        var clock = document.querySelector(".clock > h2");
 
-        setInterval(changeImage, 3000);
+        function createImg() {
+            var data = document.body.dataset.img;
+            var obj = JSON.parse(data);
 
-        var i = 1;
-
-        function changeImage(){
             var img = document.createElement("img");
-            img.src = obj[++i];
+            img.src = obj[++cnt];
             img.classList.add("bgImg");
 
-            body.removeChild(document.querySelector("img"));
-            body.appendChild(img);
-            if(i == 4) i = 0;
+            /* 배경 이미지가 많은 경우를 고려해서 cnt == 4보다는 obj 객체 길이로 비교*/
+            if(Object.keys(obj).length == cnt) cnt = 0;
+
+            document.body.appendChild(img);
+
         }
 
-        
-        setInterval(function(){
-            
+        function createTime() {
             var date = new Date();
             var hour = date.getHours();
             var minute = date.getMinutes();
             var second = date.getSeconds();
-            
-            var h2 = document.querySelector(".clock > h2");
-            h2.innerHTML = (hour<10? "0"+hour: hour) + ":" + (minute<10? "0"+minute: minute) + ":" + (second<10? "0"+second: second);
-            console.log(second);
 
-        }, 1000);
+            var res = (hour<10? "0"+hour: hour) + ":" + (minute<10? "0"+minute: minute) + ":" + (second<10? "0"+second: second);
+            clock.innerHTML = res;
+
+        }
+        
+        (function() {
+            createImg();
+            setInterval(createImg, 2000);
+            createTime();
+            setInterval(createTime, 1000);
+        })();
 
 
     </script>

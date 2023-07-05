@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>리다이렉트 결과(서버 상태여야 합니다)</h3>
+
+    <script>
+
+    
+        //카카오 서버에서 인가 코드를 url 주소에 담아서 전달
+
+        /* 3. 인가코드 얻기 */
+        var urlsearch = new URLSearchParams(location.search);
+
+        var value = urlsearch.get("code");
+        console.log(value);
+
+
+        /* 4. 토큰발급 받기 */
+        if(value != null) {
+            ajax();
+        }
+
+        function ajax() {
+
+            var url = "http://127.0.0.1:5500/11JSAPI/index03.html";
+            var key = "4a75ef29ab09e88d2a7d54d9cf72bad8"
+
+            var data = "grant_type=authorization_code" +
+                       "&client_id=" + key +
+                       "&redirect_uri=" + url +
+                       "&code=" + value;
+
+
+            //토큰 요청
+            fetch('https://kauth.kakao.com/oauth/token', {
+                method:"post", headers:{"Content-Type":'application/x-www-form-urlencoded;charset=utf-8'},
+                body:data    
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                //브라우저 종료 시에 모두 삭제
+                //쿠키 & 세션스토리지에 토큰 값
+                sessionStorage.setItem("kakao_access", data.access_token);
+
+                //사용자 정보 api 호출
+                getUser(data.access_token);
+            });
+        }
+
+
+        /* 5. 토큰 기반으로 api 호출하기 : js로 처리 */
+        function getUser(token) {
+
+            fetch('https://kapi.kakao.com/v2/user/me',{
+                method: 'post',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    "Content-Type":'application/x-www-form-urlencoded;charset=utf-8',
+
+                },
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                console.log(data);
+            })
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
